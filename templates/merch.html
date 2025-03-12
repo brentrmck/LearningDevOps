@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Merch</title>
-</head>
-<body>
- placeholder for shop
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Merch - For shopping :D {% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Merch Store!</h1>
+    <p>Check out t shirts and records.</p>
+
+    <h2>Merchandise</h2>
+    <ul>
+    {% for item in items %}
+        <li>
+            <h3>{{ item.name }} - ${{ item.price }}: {{ item.description }}</h3>
+            <p>Quantity Available: {{ item.quantity }}</p>
+
+            <form action="{{ url_for('add_to_cart', item_id=item.id) }}" method="POST">
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity" min="1" max="{{ item.quantity }}" required>
+                <button type="submit">Add to Cart</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

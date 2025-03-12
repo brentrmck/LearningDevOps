@@ -1,0 +1,12 @@
+<form method="POST" action="/add_item">
+    {{ form.hidden_tag() }} <!-- CSRF protection -->
+    <label for="name">Name:</label>
+    {{ form.name() }}<br><br>
+    <label for="quantity">Quantity:</label>
+    {{ form.quantity() }}<br><br>
+    <label for="price">Price:</label>
+    {{ form.price() }}<br><br>
+    <label for="description">Description:</label>
+    {{ form.description() }}<br><br>
+    <button type="submit">Add Item</button>
+</form>
